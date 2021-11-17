@@ -34,4 +34,9 @@ describe DockingStation do
     expect(docking_station.bike_available).to eq bike
   end
 
+  it "should not release a bike when none are available" do
+    docking_station = DockingStation.new
+    expect { docking_station.release(bike)}.to raise_error
+  end
+
 end

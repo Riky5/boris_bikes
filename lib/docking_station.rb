@@ -6,8 +6,12 @@ class DockingStation
     @docked_bikes = []
   end
 
-  def release_bike(bike)
-    bike
+  def release_bike(bike=nil)
+    if bike.nil?
+      fail ArgumentError, "There are no bikes available"
+    else
+      bike
+    end
   end
 
   def dock(bike)
