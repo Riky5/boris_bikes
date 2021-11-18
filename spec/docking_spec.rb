@@ -38,5 +38,4 @@ describe DockingStation do
     docking_station = DockingStation.new
     expect { docking_station.release(bike)}.to raise_error
   end
-
 end
