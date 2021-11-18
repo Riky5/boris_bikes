@@ -42,7 +42,15 @@ describe DockingStation do
   it "shouldn't accept more bikes than docking station capacity" do
     docking_station = DockingStation.new
     bike = Bike.new(bike)
-    docking_station.dock(bike)
-    expect { docking_station.dock(bike)}. to raise_error "You have reached maximum capacity"
+    docking_station.dock(bike, 1)
+    expect { docking_station.dock(bike, 1)}. to raise_error "You have reached maximum capacity"
   end
+
+  it "should release 5 bikes" do
+    docking_station = DockingStation.new
+    bike = 5.times { Bike.new("bike") }
+    docking_station.dock(bike, 5)
+    expect(docking_station.release_bike(bike, 5)).to include(bike)
+  end
+
 end
