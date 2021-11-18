@@ -15,7 +15,9 @@ class DockingStation
   end
 
   def dock(bike)
-    docked_bikes << bike
+    # if docked_bikes.include? bike
+      fail "You have reached maximum capacity" if docked_bikes[0] == bike
+      docked_bikes << bike
   end
 
   def bike_available

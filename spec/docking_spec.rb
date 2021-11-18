@@ -36,6 +36,13 @@ describe DockingStation do
 
   it "should not release a bike when none are available" do
     docking_station = DockingStation.new
-    expect { docking_station.release(bike)}.to raise_error
+    expect { raise "There are no bikes available"}.to raise_error(RuntimeError)
+  end
+
+  it "shouldn't accept more bikes than docking station capacity" do
+    docking_station = DockingStation.new
+    bike = Bike.new(bike)
+    docking_station.dock(bike)
+    expect { docking_station.dock(bike)}. to raise_error "You have reached maximum capacity"
   end
 end
