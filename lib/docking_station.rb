@@ -1,24 +1,22 @@
 class DockingStation
 
-  # attr_reader :docked_bikes
+  attr_reader :docked__bikes
 
   def initialize
-    @docked_bikes = [Bike.new("bike"), Bike.new("bike"), Bike.new("bike"), Bike.new("bike"), Bike.new("bike")]
+    @docked_bikes = []
   end
 
-  def release_bike(bike, num_of_bikes)
+  def release_bike(bike)
     if @docked_bikes.empty?
-      fail ArgumentError, "There are no bikes available"
+      fail "There are no bikes available"
     else
-      @docked_bikes.each do |bike| 
-        num_of_bikes.times { bike }
-      end
+      @docked_bikes.pop
     end
   end
 
-  def dock(bike, num_of_bikes)
-    # if docked_bikes.include? bike
-      fail "You have reached maximum capacity" if @docked_bikes.include?(num_of_bikes.times {bike})
+  def dock(bike)
+    # if docked_docked_bikes
+      fail "You have reached maximum capacity" if @docked_bikes.count >= 20
       @docked_bikes << bike
   end
 
